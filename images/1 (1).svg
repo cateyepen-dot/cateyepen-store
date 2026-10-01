@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" role="img" aria-label="CateyePen — one-step cat eye gel">
+  <defs>
+    <linearGradient id="penBody" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f3d3da"/>
+      <stop offset="0.5" stop-color="#dfa3b1"/>
+      <stop offset="1" stop-color="#c98a99"/>
+    </linearGradient>
+    <linearGradient id="swoosh" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e9c0ca"/>
+      <stop offset="1" stop-color="#d59aa8"/>
+    </linearGradient>
+  </defs>
+  <rect width="500" height="500" fill="#f4f8fa"/>
+  <path d="M150 285 C 190 235, 260 215, 355 145 C 330 205, 265 245, 205 275 C 180 288, 163 292, 150 285 Z" fill="url(#swoosh)" opacity="0.85"/>
+  <path d="M352 148 C 345 190, 300 235, 245 268 C 300 250, 350 205, 362 160 C 365 150, 360 145, 352 148 Z" fill="url(#swoosh)" opacity="0.6"/>
+  <g transform="rotate(38 250 200)">
+    <rect x="232" y="70" width="36" height="215" rx="16" fill="url(#penBody)"/>
+    <rect x="238" y="78" width="8" height="199" rx="4" fill="#fbeef1" opacity="0.8"/>
+    <rect x="232" y="150" width="36" height="10" fill="#b8788a"/>
+    <rect x="232" y="255" width="36" height="14" rx="7" fill="#b8788a"/>
+    <circle cx="250" cy="66" r="12" fill="#e6b6c1"/>
+  </g>
+  <text x="250" y="352" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="62" fill="#b0687f">CateyePen</text>
+  <text x="250" y="392" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="19" letter-spacing="5" fill="#9aa0a6">ONE-STEP CAT EYE GEL</text>
+</svg>
