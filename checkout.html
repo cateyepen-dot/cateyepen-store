@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Checkout – CateyePen</title>
+<style>
+:root{--ink:#2e2a39;--ink2:#46405a;--cta:#c4234f;--cta-d:#a31c41;--ok:#1e8e5a;--mut:#756f85;--line:#e6e2ee;--bg:#f6f4fa;--soft:#efecf6}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+header{background:var(--ink);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+header a{color:#fff;text-decoration:none;font-weight:800;font-size:20px;letter-spacing:.4px}header span{font-size:13px;opacity:.85}
+.steps{display:flex;max-width:1020px;margin:18px auto 0;padding:0 16px;gap:8px;font-size:13px;color:var(--mut)}
+.steps div{flex:1;border-top:3px solid var(--line);padding-top:6px;font-weight:600}.steps .on{border-color:var(--cta);color:var(--ink)}.steps .dn{border-color:var(--ok);color:var(--ok)}
+.wrap{max-width:1020px;margin:16px auto 24px;padding:0 16px;display:grid;grid-template-columns:1.15fr .85fr;gap:22px;align-items:start}
+@media(max-width:820px){.wrap{grid-template-columns:1fr}.sum{order:-1}}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:20px;margin-bottom:16px}
+h2{font-size:17px;margin:0 0 14px}label{display:block;font-size:13px;color:var(--mut);margin:0 0 4px}
+input,select,textarea{width:100%;padding:12px;border:1.5px solid #d6d1e2;border-radius:10px;font:inherit;font-size:16px;background:#fff;color:var(--ink)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--ink2);box-shadow:0 0 0 3px rgba(70,64,90,.15)}
+.f{margin-bottom:12px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}@media(max-width:480px){.row{grid-template-columns:1fr;gap:0}}
+.fe{display:block;color:#c0242a;font-size:12.5px;min-height:0;margin-top:3px}.f.bad input,.f.bad select,.f.bad textarea{border-color:#c0242a}
+.it{display:flex;gap:12px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);font-size:14px}.it img{width:52px;height:52px;object-fit:cover;border-radius:8px;background:var(--soft)}.it div{flex:1}.it small{color:var(--mut)}
+.tot{display:flex;justify-content:space-between;padding:7px 0;font-size:14px}.tot.g{font-weight:800;font-size:18px;border-top:1px solid var(--line);margin-top:6px;padding-top:12px}.free{color:var(--ok);font-weight:700}
+.tabs{display:flex;gap:10px;margin-bottom:16px}.tab{flex:1;padding:13px 8px;border:1.5px solid #d6d1e2;border-radius:11px;background:#fff;font:inherit;font-weight:700;cursor:pointer;color:var(--ink);position:relative}
+.tab.on{border-color:var(--ink);background:var(--soft)}.tab small{display:block;font-weight:500;font-size:11.5px;color:var(--mut)}
+.btn{display:block;width:100%;padding:15px;border:0;border-radius:11px;background:var(--cta);color:#fff;font:inherit;font-weight:800;font-size:16px;cursor:pointer;text-align:center;text-decoration:none}
+.btn:hover{background:var(--cta-d)}.btn:disabled{opacity:.6;cursor:wait}.btn.alt{background:#fff;color:var(--ink);border:1.5px solid #d6d1e2}.btn.alt:hover{background:var(--soft)}
+.err{color:#c0242a;font-size:14px;margin:10px 0 0;display:none}.note{font-size:12.5px;color:var(--mut);margin:10px 0 0;line-height:1.5}.info{background:var(--soft);border-radius:10px;padding:14px;font-size:14px;line-height:1.5;margin-bottom:12px}
+.apps3{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0 12px}.apps3 .btn{padding:11px 4px;font-size:13.5px}
+.qr{border:1px solid var(--line);border-radius:16px;overflow:hidden;max-width:300px;margin:12px auto 14px;box-shadow:0 8px 26px rgba(46,42,57,.12)}
+.qr .h{background:var(--ink);color:#fff;text-align:center;padding:11px;font-weight:800;font-size:13px;letter-spacing:.8px}.qr .b{padding:18px;text-align:center;background:#fff}.qr svg{width:100%;height:auto;display:block}
+.qr .amt{font-size:26px;font-weight:800;margin:10px 0 6px}.qr .upi{font-family:ui-monospace,monospace;font-size:13px;background:var(--soft);border-radius:8px;padding:8px;word-break:break-all}
+.qr .f2{background:var(--bg);border-top:1px solid var(--line);padding:9px;text-align:center;font-size:12px;color:var(--mut)}
+details summary{cursor:pointer;font-weight:700;font-size:14px;padding:6px 0}.how{font-size:14px;line-height:1.7;background:var(--soft);border-radius:10px;padding:12px 14px 12px 32px;margin:12px 0}
+.hide{display:none!important}.ok{text-align:center;padding:34px 12px}.ok h2{font-size:24px}.ok ul{text-align:left;max-width:420px;margin:14px auto;line-height:1.7;font-size:14.5px}
+.sec{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-size:12.5px;color:var(--mut);margin-top:14px}
+footer{text-align:center;font-size:12.5px;color:var(--mut);padding:10px 16px 30px}footer a{color:var(--mut);margin:0 8px}
+
+.card{border-radius:18px;box-shadow:0 1px 0 rgba(43,34,48,.04),0 24px 40px -34px rgba(43,34,48,.35);animation:ckIn .55s cubic-bezier(.22,1,.36,1) both}
+.wrap>div:nth-child(2) .card{animation-delay:.08s}
+@keyframes ckIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.tab{transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s,border-color .25s}
+.tab:hover{transform:translateY(-2px)}
+.tab .tl{display:flex;gap:4px;justify-content:center;margin-bottom:6px}
+#pUpi,#pCard{animation:ckIn .4s cubic-bezier(.22,1,.36,1) both}
+.btn{border-radius:14px;transition:transform .25s cubic-bezier(.22,1,.36,1),box-shadow .25s,filter .25s;background-image:linear-gradient(135deg,var(--cta),#d8466f)}
+.btn:hover{transform:translateY(-2px);box-shadow:0 14px 26px -10px rgba(196,35,79,.55)}
+.btn:active{transform:scale(.98)}
+.btn.alt{background-image:none}
+.btn:disabled{filter:grayscale(.3);opacity:.8;transform:none;box-shadow:none}
+header{background:linear-gradient(90deg,#2b2230,#3b2d44)}
+</style></head><body>
+<header><a href="/index.html">CateyePen</a><span>🔒 Secure checkout</span></header>
+<div class="steps" id="steps"><div class="on">1 · Delivery</div><div>2 · Payment</div><div>3 · Done</div></div>
+
+<div id="empty" class="wrap hide"><div class="card ok" style="grid-column:1/-1"><h2>Your cart is empty</h2><p><a href="/collections/all.html" style="color:var(--cta);font-weight:700">Continue shopping</a></p></div></div>
+
+<div id="main" class="wrap hide">
+ <div>
+  <div class="card" id="detailsCard"><h2>Delivery details</h2>
+   <div class="f"><label for="name">Full name</label><input id="name" autocomplete="name"><small class="fe"></small></div>
+   <div class="row"><div class="f"><label for="phone">Mobile number</label><input id="phone" type="tel" inputmode="numeric" maxlength="13" autocomplete="tel-national" placeholder="10-digit number"><small class="fe"></small></div>
+   <div class="f"><label for="email">Email (for order updates)</label><input id="email" type="email" autocomplete="email"><small class="fe"></small></div></div>
+   <div class="f"><label for="address">Full address (house no., street, area)</label><textarea id="address" rows="2" autocomplete="street-address"></textarea><small class="fe"></small></div>
+   <div class="row"><div class="f"><label for="pin">PIN code</label><input id="pin" inputmode="numeric" maxlength="6" autocomplete="postal-code"><small class="fe"></small></div>
+   <div class="f"><label for="city">City</label><input id="city" autocomplete="address-level2"><small class="fe"></small></div></div>
+   <div class="f"><label for="state">State</label><select id="state"></select><small class="fe"></small></div>
+  </div>
+  <div class="card" id="payCardBox"><h2>Payment</h2>
+   <div class="tabs"><button class="tab on" id="tUpi" type="button"><span class="tl"><svg viewBox="0 0 38 24" width="30" height="19" aria-label="UPI"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d9cfe0"/><text x="19" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-size="11" font-weight="800" fill="#3d3d3d">UP<tspan fill="#e8742a">I</tspan></text></svg></span>UPI<small>QR code or your UPI app</small></button><button class="tab" id="tCard" type="button"><span class="tl"><svg viewBox="0 0 38 24" width="30" height="19" aria-label="Visa"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d9cfe0"/><text x="19" y="16" text-anchor="middle" font-family="Arial,sans-serif" font-size="10.5" font-weight="900" font-style="italic" fill="#1a1f71">VISA</text></svg><svg viewBox="0 0 38 24" width="30" height="19" aria-label="Mastercard"><rect x=".5" y=".5" width="37" height="23" rx="3" fill="#fff" stroke="#d9cfe0"/><circle cx="15" cy="12" r="6.5" fill="#eb001b"/><circle cx="23" cy="12" r="6.5" fill="#f79e1b"/><path d="M19 6.8a6.5 6.5 0 0 1 0 10.4 6.5 6.5 0 0 1 0-10.4z" fill="#ff5f00"/></svg></span>Card<small id="cardSub">Visa · Mastercard</small></button></div>
+   <div id="pUpi">
+    <button class="btn" id="goUpi" type="button">Pay <span class="amt"></span> with UPI</button>
+    <div id="upiBox" class="hide">
+     <div id="appsBox" class="hide"><a class="btn" id="aU">Open my UPI app to pay</a><div class="apps3"><a class="btn alt" id="aG">Google Pay</a><a class="btn alt" id="aP">PhonePe</a><a class="btn alt" id="aT">Paytm</a></div></div>
+     <details id="qrWrap" open><summary>Scan QR code</summary>
+      <div class="qr"><div class="h">SCAN &amp; PAY · CATEYEPEN</div><div class="b"><div id="qrSvg"></div><div class="amt" id="qAmt"></div><div class="upi" id="qUpi"></div></div><div class="f2">Works with any UPI app</div></div></details>
+     <button class="btn alt" id="copyBtn" type="button">Copy UPI ID</button>
+     <ol class="how"><li>Pay <b class="amt"></b> using the buttons above or the QR.</li><li>Copy the <b>12-digit UTR / reference number</b> from the payment screen.</li><li>Paste it below and tap <b>Confirm order</b>.</li></ol>
+     <div class="f"><label for="utr">UTR / UPI reference number</label><input id="utr" inputmode="numeric" maxlength="12" placeholder="12-digit number" autocomplete="off"><small class="fe"></small></div>
+     <button class="btn" id="subUpi" type="button">Confirm order</button>
+     <p class="err" id="err2"></p>
+     <p class="note">Your order is confirmed once we match your payment in our bank account.</p>
+    </div>
+   </div>
+   <div id="pCard" class="hide">
+    <div id="cardOn" class="hide"><button class="btn" id="payCard" type="button">Pay by card</button><p class="err" id="err3"></p><p class="note">Card payments are processed on Razorpay's secure page. We never see or store your card details.</p></div>
+    <div id="cardOff" class="hide"><div class="info">Card payments are being activated and will be available very soon. You can pay right now with UPI.</div><button class="btn" id="useUpi" type="button">Pay with UPI instead</button></div>
+   </div>
+   <div class="sec"><span>🔒 HTTPS secure</span><span>🚚 Free delivery across India</span></div>
+  </div>
+ </div>
+ <div class="sum"><div class="card"><h2>Order summary</h2><div id="items"></div>
+  <div class="tot"><span>Subtotal</span><span id="sub"></span></div><div class="tot"><span>Delivery</span><span class="free">FREE</span></div><div class="tot g"><span>Total</span><span id="tot"></span></div></div></div>
+</div>
+
+<div id="done" class="wrap hide"><div class="card ok" style="grid-column:1/-1"><div style="font-size:46px">✅</div><h2 id="doneH"></h2><p id="doneP"></p><p>Order ID: <b id="oid"></b></p>
+ <ul id="next"></ul><p><a class="btn" href="/index.html" style="display:inline-block;width:auto;padding:13px 26px">Back to shop</a></p><p class="note">Questions? <a href="mailto:cateyepen@gmail.com" style="color:var(--cta)">cateyepen@gmail.com</a> (mention your Order ID)</p></div></div>
+
+<footer><a href="/policies/shipping-policy.html">Shipping</a><a href="/policies/refund-policy.html">Refunds</a><a href="/policies/privacy-policy.html">Privacy</a><a href="/policies/terms-of-service.html">Terms</a><a href="/pages/contact.html">Contact</a></footer>
+
+<script src="/js/qrcode.js"></script>
+<script>
+(function(){
+var UPI_ID='arnav10042007@okaxis', PAYEE='CateyePen', FORMSPREE='https://formspree.io/f/mqpaggyr', SAVE='cp_checkout';
+var STATES=['Andhra Pradesh','Arunachal Pradesh','Assam','Bihar','Chhattisgarh','Goa','Gujarat','Haryana','Himachal Pradesh','Jharkhand','Karnataka','Kerala','Madhya Pradesh','Maharashtra','Manipur','Meghalaya','Mizoram','Nagaland','Odisha','Punjab','Rajasthan','Sikkim','Tamil Nadu','Telangana','Tripura','Uttar Pradesh','Uttarakhand','West Bengal','Delhi','Jammu and Kashmir','Ladakh','Chandigarh','Puducherry','Andaman and Nicobar Islands','Dadra and Nagar Haveli and Daman and Diu','Lakshadweep'];
+var $=function(i){return document.getElementById(i)};
+function esc(s){return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+var cart=[];try{cart=JSON.parse(localStorage.getItem('cateyepen_cart_inr')||'[]')}catch(e){}
+cart=cart.filter(function(i){return i&&i.qty>0});
+function fmt(n){return '\u20B9'+n.toLocaleString('en-IN')}
+if(!cart.length){$('empty').classList.remove('hide');$('steps').classList.add('hide');return}
+var TOTAL=Math.round(cart.reduce(function(s,i){return s+i.price*i.qty},0));
+$('main').classList.remove('hide');
+$('items').innerHTML=cart.map(function(i){var img=i.img?'<img src="/'+esc(String(i.img).replace(/^\/+/,''))+'" alt="">':'';
+ return '<div class="it">'+img+'<div>'+esc(i.name)+(i.variant?'<br><small>'+esc(i.variant)+'</small>':'')+'<br><small>Qty '+i.qty+'</small></div><b>'+(i.price===0?'FREE':fmt(Math.round(i.price*i.qty)))+'</b></div>'}).join('');
+$('sub').textContent=$('tot').textContent=fmt(TOTAL);
+Array.prototype.forEach.call(document.querySelectorAll('.amt'),function(e){e.textContent=fmt(TOTAL)});
+$('state').innerHTML='<option value="">Select state</option>'+STATES.map(function(s){return '<option>'+s+'</option>'}).join('');
+var orderId='CP'+Date.now().toString(36).toUpperCase().slice(-6)+Math.floor(Math.random()*90+10);
+var mobile=/Android|iPhone|iPad/i.test(navigator.userAgent), launched=false, sent=false;
+function step(n){Array.prototype.forEach.call($('steps').children,function(d,i){d.className=i+1<n?'dn':i+1===n?'on':''})}
+function showErr(id,m){var e=$(id);e.textContent=m;e.style.display=m?'block':'none'}
+
+/* ---- details form: inline validation, remembered details, PIN auto-fill ---- */
+var V={
+ name:function(v){return v.length>=2||'Enter your full name'},
+ phone:function(v){return /^[6-9]\d{9}$/.test(v)||'Enter a valid 10-digit mobile number'},
+ email:function(v){return /^\S+@\S+\.\S+$/.test(v)||'Enter a valid email address'},
+ address:function(v){return v.length>=8||'Enter your full address'},
+ pin:function(v){return /^[1-9]\d{5}$/.test(v)||'Enter a valid 6-digit PIN code'},
+ city:function(v){return v.length>=2||'Enter your city'},
+ state:function(v){return !!v||'Select your state'}};
+function check(id){var el=$(id),r=V[id](el.value.trim()),f=el.parentNode;f.classList.toggle('bad',r!==true);f.querySelector('.fe').textContent=r===true?'':r;return r===true}
+Object.keys(V).forEach(function(k){$(k).addEventListener('blur',function(){if(this.value||this.parentNode.classList.contains('bad'))check(k)});$(k).addEventListener('input',function(){if(this.parentNode.classList.contains('bad'))check(k)})});
+$('phone').addEventListener('input',function(){this.value=this.value.replace(/\D/g,'').replace(/^(91|0)(?=\d{10}$)/,'')});
+$('pin').addEventListener('input',function(){this.value=this.value.replace(/\D/g,'');if(this.value.length===6)lookup(this.value)});
+function lookup(pin){fetch('https://api.postalpincode.in/pincode/'+pin).then(function(r){return r.json()}).then(function(j){
+ var o=j&&j[0]&&j[0].PostOffice&&j[0].PostOffice[0];if(!o)return;
+ if(!$('city').value)$('city').value=o.District||'';
+ var want=String(o.State||'').replace(/&/g,'and').toLowerCase();
+ for(var i=0;i<STATES.length;i++)if(STATES[i].toLowerCase()===want){$('state').value=STATES[i];break}
+ ['city','state'].forEach(function(k){if($(k).value)check(k)})}).catch(function(){})}
+try{var sv=JSON.parse(localStorage.getItem(SAVE)||'{}');Object.keys(V).forEach(function(k){if(sv[k])$(k).value=sv[k]})}catch(e){}
+function details(){
+ var bad=null;Object.keys(V).forEach(function(k){if(!check(k)&&!bad)bad=$(k)});
+ if(bad){bad.focus();bad.scrollIntoView({block:'center'});return null}
+ var d={};Object.keys(V).forEach(function(k){d[k]=$(k).value.trim()});
+ try{localStorage.setItem(SAVE,JSON.stringify(d))}catch(e){}return d}
+
+function itemsText(){return cart.map(function(i){return i.name+' x'+i.qty+(i.variant?' ['+i.variant+']':'')}).join('; ')}
+function notify(d,method,extra){
+ var body={order_id:orderId,payment_method:method,amount_inr:TOTAL,items:itemsText(),name:d.name,phone:d.phone,email:d.email,address:d.address,city:d.city,state:d.state,pincode:d.pin,_subject:'New CateyePen order '+orderId+' ('+method+')'};
+ for(var k in extra)body[k]=extra[k];
+ return fetch(FORMSPREE,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(body)})}
+function finish(h,p,points){try{localStorage.removeItem('cateyepen_cart_inr')}catch(e){}
+ $('main').classList.add('hide');$('done').classList.remove('hide');step(3);$('steps').children[2].className='dn';
+ $('doneH').textContent=h;$('doneP').textContent=p;$('oid').textContent=orderId;$('next').innerHTML=points.map(function(x){return '<li>'+x+'</li>'}).join('');window.scrollTo(0,0)}
+
+/* ---- tabs ---- */
+var cardLive=false;
+function tab(card){$('tCard').className='tab'+(card?' on':'');$('tUpi').className='tab'+(card?'':' on');$('pCard').classList.toggle('hide',!card);$('pUpi').classList.toggle('hide',card)}
+$('tUpi').onclick=function(){tab(false)};$('tCard').onclick=function(){tab(true)};$('useUpi').onclick=function(){tab(false)};
+var ROUTES={status:'/api/card-status',create:'/api/create-order',verify:'/api/verify-payment'};
+function call(u,b){return fetch(u,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(b)}).then(function(r){return r.json().catch(function(){return {}}).then(function(j){return {ok:r.ok,status:r.status,j:j}})})}
+function api(b){return call(ROUTES[b.action],b).then(function(r){return r.status===404?call('/.netlify/functions/razorpay',b):r})}
+api({action:'status'}).then(function(r){cardLive=!!(r.ok&&r.j.card)}).catch(function(){}).then(function(){
+ $('cardOn').classList.toggle('hide',!cardLive);$('cardOff').classList.toggle('hide',cardLive);if(!cardLive)$('cardSub').textContent='Coming soon';
+ $('payCard').textContent='Pay '+fmt(TOTAL)+' by card'});
+
+/* ---- UPI ---- */
+function q(){return 'pa='+UPI_ID+'&pn='+encodeURIComponent(PAYEE)+'&am='+TOTAL+'.00&cu=INR&tn='+encodeURIComponent('Order '+orderId)}
+$('goUpi').onclick=function(){
+ var d=details();if(!d)return;step(2);
+ var code=qrcode(0,'M');code.addData('upi://pay?'+q());code.make();
+ $('qrSvg').innerHTML=code.createSvgTag({cellSize:6,margin:0,scalable:true});$('qAmt').textContent=fmt(TOTAL);$('qUpi').textContent=UPI_ID;
+ $('aU').href='upi://pay?'+q();$('aG').href='gpay://upi/pay?'+q();$('aP').href='phonepe://pay?'+q();$('aT').href='paytmmp://pay?'+q();
+ if(mobile){$('appsBox').classList.remove('hide');$('qrWrap').open=false;Array.prototype.forEach.call(document.querySelectorAll('#appsBox a'),function(a){a.addEventListener('click',function(){launched=true})})}
+ $('goUpi').classList.add('hide');$('upiBox').classList.remove('hide');$('upiBox').scrollIntoView({block:'start'})};
+document.addEventListener('visibilitychange',function(){if(!document.hidden&&launched){launched=false;setTimeout(function(){$('utr').scrollIntoView({block:'center'});$('utr').focus()},250)}});
+$('copyBtn').onclick=function(){var b=$('copyBtn');try{navigator.clipboard.writeText(UPI_ID);b.textContent='Copied ✓'}catch(e){b.textContent=UPI_ID}setTimeout(function(){b.textContent='Copy UPI ID'},2500)};
+$('utr').addEventListener('input',function(){this.value=this.value.replace(/\D/g,'').slice(0,12);this.parentNode.classList.remove('bad');this.parentNode.querySelector('.fe').textContent=''});
+$('subUpi').onclick=function(){
+ var d=details();if(!d)return;var u=$('utr').value;
+ if(!/^\d{12}$/.test(u)){var f=$('utr').parentNode;f.classList.add('bad');f.querySelector('.fe').textContent='Enter the 12-digit UTR from your payment app';$('utr').focus();return}
+ if(sent)return;sent=true;showErr('err2','');$('subUpi').disabled=true;$('subUpi').textContent='Confirming...';
+ notify(d,'UPI',{utr:u}).then(function(r){if(!r.ok)throw 0;
+  finish('Order received!','Thank you, '+d.name.split(' ')[0]+'! We have your order and payment reference.',['We verify your payment (usually within a few hours).','You get a confirmation on <b>'+esc(d.email)+'</b>.','We ship your order and send tracking on <b>+91 '+esc(d.phone)+'</b> / email.'])})
+ .catch(function(){sent=false;$('subUpi').disabled=false;$('subUpi').textContent='Confirm order';showErr('err2','Could not submit. Check your internet and tap Confirm order again. Your payment is safe.')})};
+
+/* ---- Card (Razorpay) ---- */
+function loadRzp(){return new Promise(function(res,rej){if(window.Razorpay)return res();var s=document.createElement('script');s.src='https://checkout.razorpay.com/v1/checkout.js';s.onload=res;s.onerror=rej;document.head.appendChild(s)})}
+$('payCard').onclick=function(){
+ var d=details();if(!d)return;showErr('err3','');step(2);$('payCard').disabled=true;$('payCard').textContent='Opening secure payment...';
+ var items=cart.map(function(i){return {id:i.id,name:i.name,qty:i.qty,variant:i.variant||''}});
+ function reset(){$('payCard').disabled=false;$('payCard').textContent='Pay '+fmt(TOTAL)+' by card'}
+ Promise.all([api({action:'create',orderId:orderId,items:items,customer:{name:d.name,phone:d.phone,email:d.email,address:d.address,city:d.city,state:d.state,pincode:d.pin}}),loadRzp()]).then(function(a){
+  var r=a[0];if(!r.ok)throw new Error(r.status===401||r.status===503?'Card payments are temporarily unavailable. Please pay with UPI.':'Could not start card payment. Please try again or pay with UPI.');
+  var rz=new Razorpay({key:r.j.key_id,amount:r.j.amount,currency:r.j.currency||'INR',order_id:r.j.order_id,name:'CateyePen',description:'Order '+orderId,
+   prefill:{name:d.name,email:d.email,contact:d.phone},theme:{color:'#2e2a39'},
+   modal:{ondismiss:function(){showErr('err3','Payment cancelled. You have not been charged.');reset()}},
+   handler:function(resp){$('payCard').textContent='Confirming payment...';resp.action='verify';api(resp).then(function(v){
+     if(!v.ok||!v.j.verified)throw 0;
+     notify(d,'Card (Razorpay)',{razorpay_payment_id:resp.razorpay_payment_id,razorpay_order_id:resp.razorpay_order_id}).catch(function(){});
+     finish('Payment successful!','Thank you, '+d.name.split(' ')[0]+'! Your card payment is confirmed.',['A receipt is sent to <b>'+esc(d.email)+'</b>.','We ship your order and send tracking on <b>+91 '+esc(d.phone)+'</b> / email.'])})
+    .catch(function(){showErr('err3','We could not verify the payment. If money was deducted, email us with Order ID '+orderId+'.');reset()})}});
+  rz.on('payment.failed',function(f){var why=f&&f.error&&f.error.description?f.error.description:'';showErr('err3','Payment failed'+(why?': '+why.replace(/[.\s]+$/,''):'')+'. Please try again or use UPI.');reset()});rz.open()})
+ .catch(function(e){showErr('err3',e&&e.message?e.message:'Could not load card payment. Please use UPI.');reset()})};
+})();
+</script></body></html>

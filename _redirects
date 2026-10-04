@@ -1,0 +1,7 @@
+/api/create-order    /.netlify/functions/razorpay?action=create   200
+/api/verify-payment  /.netlify/functions/razorpay?action=verify   200
+/api/card-status     /.netlify/functions/razorpay?action=status   200
+
+# never serve env files
+/.env    /404.html  404!
+/.env.*  /404.html  404!
